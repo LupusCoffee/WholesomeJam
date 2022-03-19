@@ -24,6 +24,6 @@ public class PlayerAiming : MonoBehaviour
     {
         Vector2 lookDirection = mousePos - body.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-        body.rotation = angle;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
 }

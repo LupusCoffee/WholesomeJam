@@ -5,7 +5,13 @@ using UnityEngine;
 public class SubjectHealth : MonoBehaviour
 {
     float gravityForcePower;
-    public float health;
+    float health;
+    public float maximumHealth;
+
+    private void Start()
+    {
+        health = maximumHealth;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +29,7 @@ public class SubjectHealth : MonoBehaviour
         if(health <= 0)
         {
             this.GetComponent<GravityPointPull>().gravityForcePower = -GetComponent<GravityPointPull>().gravityForcePower;
+            health = maximumHealth; //upon group entry, their health is full again
         }
     }
 }
