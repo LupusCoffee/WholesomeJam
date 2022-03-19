@@ -5,9 +5,15 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
+    public Vector3 cameraOffset;
+    public float followSpeed;
+    Vector3 velocity = Vector3.zero;
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        Vector3 targetPos = target.position + cameraOffset;
+        Vector3 smoothPos = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, followSpeed * Time.fixedDeltaTime);
+
+        transform.position = smoothPos;
     }
 }

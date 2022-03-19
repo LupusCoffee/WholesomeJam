@@ -272,6 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 644460525}
+  cameraOffset: {x: 0, y: 0, z: -10}
+  followSpeed: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -343,6 +345,7 @@ GameObject:
   - component: {fileID: 644460522}
   - component: {fileID: 644460526}
   - component: {fileID: 644460527}
+  - component: {fileID: 644460528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -465,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cdfbabb5e037e4ea721fe2e0241957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 20
+  runSpeed: 15
 --- !u!114 &644460527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +482,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
+--- !u!114 &644460528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644460521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd00470e97c86094aaa0b703434c38e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1881514524}
+  bulletPrefab: {fileID: 3875425944293224513, guid: c3c8f920e061ae44cb053b86fc37679f, type: 3}
+  bulletForce: 50
 --- !u!1 &1060444573
 GameObject:
   m_ObjectHideFlags: 0
