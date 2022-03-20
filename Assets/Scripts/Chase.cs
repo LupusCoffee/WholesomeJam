@@ -12,11 +12,11 @@ public class Chase : MonoBehaviour
     float speed;
     float moveSpeed;
     float groupSize;
+    float maxDistanceFromEnemy = 15;
 
     Vector2 movement;
 
-    float maxDistanceFromEnemy = 15;
-
+    bool fleeing;
 
     private void Start()
     {
@@ -31,17 +31,29 @@ public class Chase : MonoBehaviour
 
         target = this.gameObject.transform.GetChild(3).gameObject.GetComponent<StateMachine>().GetClosestEnemy();
 
-        //target conditions
-        if(target == null || target == mapMiddle)
+        if(target != null)
         {
+            if (target.parent.tag == "enemy")
+            {
+                if (groupSize <= target.gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count * 0.7f)
+                {
+                    fleeing = true;
+                    moveSpeed = -speed;
+                }
+            }
+        }
+        else if(target == null || target == mapMiddle)
+        {
+            fleeing = false;
+            moveSpeed = speed;
+
             target = this.gameObject.transform.Find("SubjectDitector").gameObject.GetComponent<SearchForSubject>().GetClosestSubject();
-            if(target == null)
+            if (target == null)
             {
                 target = mapMiddle;
             }
         }
 
-        //if target is stronger, flee
 
         //move towards enemy
         Vector3 direction = target.position - transform.position;
@@ -51,13 +63,16 @@ public class Chase : MonoBehaviour
 
 
         //keep distance
-        if (Vector3.Distance(target.position, transform.position) <= maxDistanceFromEnemy)
+        if (!fleeing)
         {
-            moveSpeed = -speed;
-        }
-        else
-        {
-            moveSpeed = speed;
+            if (Vector3.Distance(target.position, transform.position) <= maxDistanceFromEnemy)
+            {
+                moveSpeed = 0;
+            }
+            else
+            {
+                moveSpeed = speed;
+            }
         }
     }
 

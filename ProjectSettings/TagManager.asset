@@ -9,6 +9,7 @@ TagManager:
   - wall
   - group
   - ownedSubject
+  - enemy
   layers:
   - Default
   - TransparentFX
