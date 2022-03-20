@@ -11,4 +11,9 @@ public class Bullet : MonoBehaviour
     {
         collider = this.gameObject.AddComponent<PolygonCollider2D>();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

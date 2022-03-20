@@ -6,7 +6,7 @@ public class GroupManager : MonoBehaviour
 {
     float groupSize;
     public static float speed;
-    public static CircleCollider2D thisAreaOfInfluence;
+    private CircleCollider2D thisAreaOfInfluence;
 
     private void Start()
     {
@@ -15,9 +15,9 @@ public class GroupManager : MonoBehaviour
 
     void Update()
     {
-        if (Time.frameCount >= 60)
+        if (Time.frameCount >= 5)
         {
-            groupSize = GroupSizeChecker.subjectsInInfluenceArea.Count;
+            groupSize = this.gameObject.transform.GetChild(1).gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count;
             thisAreaOfInfluence.radius = Mathf.Sqrt(((groupSize)+1.9f)/(0.83f*13/Mathf.Pow(0.5f, 2)));
 
             if (groupSize <= 0)

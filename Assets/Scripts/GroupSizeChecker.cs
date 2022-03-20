@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroupSizeChecker : MonoBehaviour
 {
-    public static List<Collider2D> subjectsInInfluenceArea = new List<Collider2D>();
+    public List<Collider2D> subjectsInInfluenceArea = new List<Collider2D>();
 
     //group size checker
     void OnTriggerEnter2D(Collider2D collision)

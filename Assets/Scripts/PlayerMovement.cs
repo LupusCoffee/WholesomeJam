@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMovement;
     float verticalMovement;
 
-    public float runSpeed;
+    float speedAdjuster = 25f;
+    float runSpeed;
+    float groupSize;
 
     void Start()
     {
@@ -18,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        groupSize = this.gameObject.transform.GetChild(1).gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count;
+        runSpeed = -groupSize+speedAdjuster; //y = -x + 25
+
+        print(runSpeed);
+
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
     }

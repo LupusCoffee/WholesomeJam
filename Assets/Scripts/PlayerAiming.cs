@@ -6,13 +6,14 @@ public class PlayerAiming : MonoBehaviour
 {
     Rigidbody2D body;
 
-    public Camera cam;
+    Camera cam;
 
     Vector2 mousePos;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     void Update()
