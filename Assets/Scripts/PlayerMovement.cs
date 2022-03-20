@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     float speedAdjuster = 20f;
     float runSpeed;
-    float groupSize;
+    public static float groupSize;
 
     void Start()
     {
