@@ -6,6 +6,7 @@ public class Chase : MonoBehaviour
 {
     Transform target;
     Transform mapMiddle;
+    Transform wallTransform;
     Rigidbody2D body;
 
     float speedAdjuster = 20f;
@@ -27,6 +28,7 @@ public class Chase : MonoBehaviour
     void Update()
     {
         groupSize = this.gameObject.transform.GetChild(1).gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count;
+        wallTransform = this.gameObject.transform.GetChild(1).gameObject.GetComponent<WallDetector>().GetWallTransform();
         speed = -groupSize + speedAdjuster;
 
         target = this.gameObject.transform.GetChild(3).gameObject.GetComponent<StateMachine>().GetClosestEnemy();
@@ -37,7 +39,15 @@ public class Chase : MonoBehaviour
             {
                 if (groupSize <= target.gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count * 0.7f)
                 {
-                    fleeing = true;
+                    if(wallTransform == null)
+                    {
+                        fleeing = true;
+                    }
+                    else
+                    {
+                        fleeing = false;
+                        target = wallTransform;
+                    }
                     moveSpeed = -speed;
                 }
             }
@@ -54,7 +64,6 @@ public class Chase : MonoBehaviour
             }
         }
 
-
         //move towards enemy
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
@@ -63,7 +72,7 @@ public class Chase : MonoBehaviour
 
 
         //keep distance
-        if (!fleeing)
+        if (!fleeing && wallTransform == null)
         {
             if (Vector3.Distance(target.position, transform.position) <= maxDistanceFromEnemy)
             {

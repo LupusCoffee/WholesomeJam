@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4697543538166219560}
   - component: {fileID: 4697543538166219565}
   - component: {fileID: 4697543538166219566}
-  - component: {fileID: 4697543538166219564}
+  - component: {fileID: 4068676803960744781}
   - component: {fileID: 4697543538166219567}
   m_Layer: 0
   m_Name: AreaOfInfluence
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4697543538166219564
+--- !u!114 &4068676803960744781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -619,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4697543539594614510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: -176.1, z: 15.501285}
+  m_LocalPosition: {x: -15, y: -239, z: 15.501285}
   m_LocalScale: {x: 334.94095, y: 334.94095, z: 334.94095}
   m_Children: []
   m_Father: {fileID: 4697543538805684509}

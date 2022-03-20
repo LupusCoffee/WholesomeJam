@@ -9,19 +9,11 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider = this.gameObject.AddComponent<PolygonCollider2D>();
+        collider = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.AddComponent<PolygonCollider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "bullet")
-        {
-            Physics.IgnoreLayerCollision(14, 16);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        
+        Destroy(this.gameObject);
     }
 }

@@ -6,10 +6,10 @@ TagManager:
   tags:
   - bullet
   - subject
-  - wall
   - group
   - ownedSubject
   - enemy
+  - objectCollider
   layers:
   - Default
   - TransparentFX
