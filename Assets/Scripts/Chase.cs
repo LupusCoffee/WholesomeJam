@@ -22,7 +22,6 @@ public class Chase : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         mapMiddle = GameObject.Find("mid").transform;
-        moveSpeed = speed;
     }
 
     void Update()
@@ -33,7 +32,7 @@ public class Chase : MonoBehaviour
         target = this.gameObject.transform.GetChild(3).gameObject.GetComponent<StateMachine>().GetClosestEnemy();
 
         //target conditions
-        if(target == null || target == mapMiddle) //or is much stronger than you
+        if(target == null || target == mapMiddle)
         {
             target = this.gameObject.transform.Find("SubjectDitector").gameObject.GetComponent<SearchForSubject>().GetClosestSubject();
             if(target == null)
@@ -41,6 +40,8 @@ public class Chase : MonoBehaviour
                 target = mapMiddle;
             }
         }
+
+        //if target is stronger, flee
 
         //move towards enemy
         Vector3 direction = target.position - transform.position;
@@ -62,6 +63,7 @@ public class Chase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        body.velocity = new Vector2(movement.x * moveSpeed * Time.fixedDeltaTime, movement.y * moveSpeed * Time.fixedDeltaTime);
+        Vector3 targetVelocity = new Vector2(movement.x, movement.y).normalized;
+        body.velocity = targetVelocity * moveSpeed;
     }
 }
