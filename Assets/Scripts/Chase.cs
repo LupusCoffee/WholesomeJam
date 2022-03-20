@@ -7,7 +7,7 @@ public class Chase : MonoBehaviour
     Transform targetedEnemy;
     Rigidbody2D body;
 
-    public float speedAdjuster = 0.5f;
+    float speedAdjuster = 0.8f;
     float speed;
     float moveSpeed;
     float groupSize;
@@ -26,7 +26,9 @@ public class Chase : MonoBehaviour
     void Update()
     {
         groupSize = this.gameObject.transform.GetChild(1).gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count;
-        speed = -0.08f*groupSize*speedAdjuster;
+        speed = -0.032f*groupSize + speedAdjuster;
+
+        print(speed);
 
         targetedEnemy = this.gameObject.transform.GetChild(3).gameObject.GetComponent<StateMachine>().GetClosestEnemy();
 

@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
         groupSize = this.gameObject.transform.GetChild(1).gameObject.GetComponent<GroupSizeChecker>().subjectsInInfluenceArea.Count;
         runSpeed = -groupSize+speedAdjuster; //y = -x + 25
 
-        print(runSpeed);
-
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
     }
