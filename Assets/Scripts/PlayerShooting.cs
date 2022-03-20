@@ -6,7 +6,7 @@ public class PlayerShooting : ShootingFunctions
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public float bulletForce = 20f;
+    public float bulletForce = 22f;
 
     void Update()
     {

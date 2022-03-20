@@ -8,6 +8,7 @@ TagManager:
   - subject
   - wall
   - group
+  - ownedSubject
   layers:
   - Default
   - TransparentFX

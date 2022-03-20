@@ -14,6 +14,14 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+        if(collision.gameObject.tag == "bullet")
+        {
+            Physics.IgnoreLayerCollision(14, 16);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }

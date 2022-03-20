@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMovement;
     float verticalMovement;
 
-    float speedAdjuster = 25f;
+    float speedAdjuster = 20f;
     float runSpeed;
     float groupSize;
 

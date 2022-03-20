@@ -9,7 +9,7 @@ public class GroupSizeChecker : MonoBehaviour
     //group size checker
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "subject")
+        if(collision.tag == "subject" || collision.tag == "ownedSubject")
         {
             if (!subjectsInInfluenceArea.Contains(collision))
             {
@@ -19,7 +19,7 @@ public class GroupSizeChecker : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "subject")
+        if (collision.tag == "subject" || collision.tag == "ownedSubject")
         {
             if (subjectsInInfluenceArea.Contains(collision))
             {

@@ -7,7 +7,7 @@ public class EnemyShooting : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public float bulletForce = 20f;
+    public float bulletForce = 22f;
 
     //timer shiz
     public float FireRate;
@@ -15,10 +15,13 @@ public class EnemyShooting : MonoBehaviour
  
     void Update()
     {
-        if (Time.time - lastfired > 1 / FireRate)
+        if (this.gameObject.transform.GetChild(3).gameObject.GetComponent<StateMachine>().GetClosestEnemy() != null)
         {
-            lastfired = Time.time;
-            ShootingFunctions.Shoot(firePoint, bulletPrefab, bulletForce);
+            if (Time.time - lastfired > 1 / FireRate)
+            {
+                lastfired = Time.time;
+                ShootingFunctions.Shoot(firePoint, bulletPrefab, bulletForce);
+            }
         }
     }
 }

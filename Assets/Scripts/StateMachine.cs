@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    public GameObject enemy;
     public List<Transform> listOfEnemies = new List<Transform>();
+    public List<Transform> listOfBullets = new List<Transform>();
 
     //check for enemy
     public void OnTriggerEnter2D(Collider2D collision)
@@ -14,6 +14,10 @@ public class StateMachine : MonoBehaviour
         {
             listOfEnemies.Add(collision.gameObject.transform);
         }
+        if(collision.tag == "bullet")
+        {
+            listOfBullets.Add(collision.gameObject.transform);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -21,6 +25,10 @@ public class StateMachine : MonoBehaviour
         if (collision.tag == "group")
         {
             listOfEnemies.Remove(collision.gameObject.transform);
+        }
+        if (collision.tag == "bullet")
+        {
+            listOfBullets.Remove(collision.gameObject.transform);
         }
     }
 
@@ -40,5 +48,10 @@ public class StateMachine : MonoBehaviour
             }
         }
         return bestTarget;
+    }
+
+    public List<Transform> GetEnemyList()
+    {
+        return listOfEnemies;
     }
 }
